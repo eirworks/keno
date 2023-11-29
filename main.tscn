@@ -1,0 +1,319 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0y7i867c7gp0"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_yin5v"]
+[ext_resource type="PackedScene" uid="uid://boa6u7ghkjby" path="res://number_ball.tscn" id="2_r4tnp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq5cq"]
+bg_color = Color(0.305882, 0.152941, 0.431373, 1)
+
+[node name="GameRoot" type="Node2D"]
+script = ExtResource("1_yin5v")
+
+[node name="BaseUI" type="CanvasLayer" parent="."]
+
+[node name="Container" type="VBoxContainer" parent="BaseUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopStatusBar" type="PanelContainer" parent="BaseUI/Container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseUI/Container/TopStatusBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BaseUI/Container/TopStatusBar/MarginContainer"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="BaseUI/Container/TopStatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$"
+
+[node name="DayLabel" type="Label" parent="BaseUI/Container/TopStatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="GetMoneyBtn" type="Button" parent="BaseUI/Container/TopStatusBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Get Money"
+
+[node name="BallContainer" type="MarginContainer" parent="BaseUI/Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="CenterContainer" parent="BaseUI/Container/BallContainer"]
+layout_mode = 2
+
+[node name="BallsGrid" type="GridContainer" parent="BaseUI/Container/BallContainer/HBoxContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="NumberBall" parent="BaseUI/Container/BallContainer/HBoxContainer/BallsGrid" instance=ExtResource("2_r4tnp")]
+layout_mode = 2
+
+[node name="ResultContainer" type="PanelContainer" parent="BaseUI/Container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseUI/Container/ResultContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseUI/Container/ResultContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PreviousResultContainer" type="HBoxContainer" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResultNumberLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/PreviousResultContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.529412, 0.529412, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+text = "120"
+horizontal_alignment = 1
+
+[node name="OddEvenLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/PreviousResultContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.529412, 0.529412, 0.529412, 1)
+theme_override_font_sizes/font_size = 20
+text = "EVEN"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentResultContainer" type="HBoxContainer" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="OddEvenLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/CurrentResultContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "EVEN"
+horizontal_alignment = 1
+
+[node name="ResultNumberLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/CurrentResultContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 34
+text = "130
+"
+horizontal_alignment = 1
+
+[node name="BigSmallLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/CurrentResultContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "SMALL"
+horizontal_alignment = 1
+
+[node name="Bets" type="PanelContainer" parent="BaseUI/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BaseUI/Container/Bets"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="BaseUI/Container/Bets/VBoxContainer"]
+layout_mode = 2
+tab_count = 3
+tab_0/title = "Bet"
+tab_1/title = "Result"
+tab_2/title = "Help"
+
+[node name="EvenOddContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/EvenOddContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Even"
+
+[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/EvenOddContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Odd
+"
+
+[node name="BigSmallContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/BigSmallContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Smaller"
+
+[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/BigSmallContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bigger"
+
+[node name="TigerDragonContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/TigerDragonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tiger"
+
+[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/TigerDragonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Draw"
+
+[node name="Button3" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/TigerDragonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dragon"
+
+[node name="ElementalBtnContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gold"
+
+[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wood
+"
+
+[node name="Button3" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Water"
+
+[node name="Button4" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fire"
+
+[node name="Button5" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Earth"
+
+[node name="BetConfirmation" type="PanelContainer" parent="BaseUI/Container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BaseUI/Container/BetConfirmation"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CalculationContainer" type="VBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/CalculationContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Total Betting"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/CalculationContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "$80"
+horizontal_alignment = 1
+
+[node name="BetBtn" type="Button" parent="BaseUI/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "BET
+"
+
+[node name="GetMoneyUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="GetMoneyUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GetMoneyUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="ColorContainer" type="PanelContainer" parent="GetMoneyUI/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iq5cq")
+
+[node name="MarginContainer" type="MarginContainer" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Get Money Scheme"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 4
+
+[node name="MoneyFromParentBtn" type="Button" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Lie To Parent"
+
+[node name="PanelContainer" type="PanelContainer" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Today haul"
+
+[node name="Label2" type="Label" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "$ 100"
+
+[node name="QuitMoneySchemeBtn" type="Button" parent="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "I'm done"
+
+[connection signal="pressed" from="BaseUI/Container/TopStatusBar/MarginContainer/HBoxContainer/GetMoneyBtn" to="." method="_on_get_money_btn_pressed"]
+[connection signal="pressed" from="BaseUI/Container/BetBtn" to="." method="_on_bet_btn_pressed"]
+[connection signal="pressed" from="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/GridContainer/MoneyFromParentBtn" to="." method="_on_money_from_parent_btn_pressed"]
+[connection signal="pressed" from="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/QuitMoneySchemeBtn" to="." method="_on_quit_money_scheme_btn_pressed"]

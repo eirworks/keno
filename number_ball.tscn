@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://boa6u7ghkjby"]
+
+[ext_resource type="Script" path="res://number_ball.gd" id="1_bdqs4"]
+[ext_resource type="Texture2D" uid="uid://dxu4cso1devcw" path="res://assets/red_ball.png" id="1_wjb88"]
+
+[node name="BallWrapper" type="CenterContainer"]
+script = ExtResource("1_bdqs4")
+
+[node name="Ball" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_wjb88")
+
+[node name="BallNumber" type="Label" parent="."]
+layout_mode = 2
+text = "1"
