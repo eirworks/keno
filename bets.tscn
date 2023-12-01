@@ -1,0 +1,135 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6tfunn8yfg7f"]
+
+[ext_resource type="PackedScene" uid="uid://cfoe35cwc43k3" path="res://bet_badge.tscn" id="1_06de0"]
+[ext_resource type="Script" path="res://bets.gd" id="1_ugfv6"]
+
+[node name="Bets" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_ugfv6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DecreaseBetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Decrease (-)"
+
+[node name="BetAmount" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$5"
+horizontal_alignment = 1
+
+[node name="IncreaseBetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Increase (+)"
+
+[node name="EvenOddContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="EvenBtn" type="Button" parent="VBoxContainer/EvenOddContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Even"
+
+[node name="OddBtn" type="Button" parent="VBoxContainer/EvenOddContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Odd
+"
+
+[node name="BigSmallContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/BigSmallContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Smaller"
+
+[node name="Button2" type="Button" parent="VBoxContainer/BigSmallContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bigger"
+
+[node name="TigerDragonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/TigerDragonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tiger"
+
+[node name="Button2" type="Button" parent="VBoxContainer/TigerDragonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Draw"
+
+[node name="Button3" type="Button" parent="VBoxContainer/TigerDragonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dragon"
+
+[node name="ElementalBtnContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Gold"
+
+[node name="Button2" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Wood
+"
+
+[node name="Button3" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Water"
+
+[node name="Button4" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fire"
+
+[node name="Button5" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Earth"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PaidBets" type="VFlowContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/PaidBets" instance=ExtResource("1_06de0")]
+layout_mode = 2
+bet_type = 5
+bet = 5.0
+bet_rate = 1.95
+
+[connection signal="pressed" from="VBoxContainer/EvenOddContainer/EvenBtn" to="." method="_on_even_btn_pressed"]

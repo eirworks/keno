@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0y7i867c7gp0"]
+[gd_scene load_steps=6 format=3 uid="uid://b0y7i867c7gp0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_yin5v"]
 [ext_resource type="PackedScene" uid="uid://boa6u7ghkjby" path="res://number_ball.tscn" id="2_r4tnp"]
+[ext_resource type="PackedScene" uid="uid://c6tfunn8yfg7f" path="res://bets.tscn" id="3_re01t"]
+[ext_resource type="Theme" uid="uid://c0llvphff8br5" path="res://roll_btn_ui.tres" id="4_ga7x1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq5cq"]
 bg_color = Color(0.305882, 0.152941, 0.431373, 1)
@@ -75,6 +77,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="PreviousResultContainer" type="HBoxContainer" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ResultNumberLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/PreviousResultContainer"]
@@ -94,6 +97,7 @@ text = "EVEN"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="CurrentResultContainer" type="HBoxContainer" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer"]
@@ -103,14 +107,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
-text = "EVEN"
+text = "?????"
 horizontal_alignment = 1
 
 [node name="ResultNumberLabel" type="Label" parent="BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/CurrentResultContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 34
-text = "130
+text = "????
 "
 horizontal_alignment = 1
 
@@ -118,96 +122,11 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
-text = "SMALL"
+text = "?????"
 horizontal_alignment = 1
 
-[node name="Bets" type="PanelContainer" parent="BaseUI/Container"]
+[node name="Bets" parent="BaseUI/Container" instance=ExtResource("3_re01t")]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BaseUI/Container/Bets"]
-layout_mode = 2
-
-[node name="TabBar" type="TabBar" parent="BaseUI/Container/Bets/VBoxContainer"]
-layout_mode = 2
-tab_count = 3
-tab_0/title = "Bet"
-tab_1/title = "Result"
-tab_2/title = "Help"
-
-[node name="EvenOddContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/EvenOddContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Even"
-
-[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/EvenOddContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Odd
-"
-
-[node name="BigSmallContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/BigSmallContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Smaller"
-
-[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/BigSmallContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Bigger"
-
-[node name="TigerDragonContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/TigerDragonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Tiger"
-
-[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/TigerDragonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Draw"
-
-[node name="Button3" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/TigerDragonContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Dragon"
-
-[node name="ElementalBtnContainer" type="HBoxContainer" parent="BaseUI/Container/Bets/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Gold"
-
-[node name="Button2" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Wood
-"
-
-[node name="Button3" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Water"
-
-[node name="Button4" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Fire"
-
-[node name="Button5" type="Button" parent="BaseUI/Container/Bets/VBoxContainer/ElementalBtnContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Earth"
 
 [node name="BetConfirmation" type="PanelContainer" parent="BaseUI/Container"]
 layout_mode = 2
@@ -234,8 +153,9 @@ horizontal_alignment = 1
 
 [node name="BetBtn" type="Button" parent="BaseUI/Container"]
 layout_mode = 2
+theme = ExtResource("4_ga7x1")
 theme_override_font_sizes/font_size = 32
-text = "BET
+text = "ROLL
 "
 
 [node name="GetMoneyUI" type="CanvasLayer" parent="."]

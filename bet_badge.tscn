@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfoe35cwc43k3"]
+
+[ext_resource type="Script" path="res://bet_badge.gd" id="1_myf8s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25uih"]
+bg_color = Color(0.780392, 0.588235, 0.203922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.945098, 0.745098, 0.384314, 1)
+
+[node name="PanelContainer" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_25uih")
+script = ExtResource("1_myf8s")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "ODD for $5 ($9.5)"

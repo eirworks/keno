@@ -15,8 +15,12 @@ config/name_localized={
 "id_ID": "Keno Online"
 }
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Keno="*res://keno.gd"
 
 [display]
 
@@ -25,4 +29,5 @@ window/size/viewport_height=800
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
