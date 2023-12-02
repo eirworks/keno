@@ -133,19 +133,29 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="BaseUI/Container/BetConfirmation"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="CalculationContainer" type="VBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/CalculationContainer"]
+[node name="ClearBetsButton" type="Button" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Clear Bets"
+
+[node name="CalculationContainer" type="VBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Total Betting"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/CalculationContainer"]
+[node name="TotalBetLabel" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "$80"
@@ -234,6 +244,8 @@ theme_override_font_sizes/font_size = 24
 text = "I'm done"
 
 [connection signal="pressed" from="BaseUI/Container/TopStatusBar/MarginContainer/HBoxContainer/GetMoneyBtn" to="." method="_on_get_money_btn_pressed"]
+[connection signal="bet_added" from="BaseUI/Container/Bets" to="." method="_on_bets_bet_added"]
+[connection signal="pressed" from="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/ClearBetsButton" to="BaseUI/Container/Bets" method="_on_clear_bets_button_pressed"]
 [connection signal="pressed" from="BaseUI/Container/BetBtn" to="." method="_on_bet_btn_pressed"]
 [connection signal="pressed" from="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/GridContainer/MoneyFromParentBtn" to="." method="_on_money_from_parent_btn_pressed"]
 [connection signal="pressed" from="GetMoneyUI/PanelContainer/MarginContainer/ColorContainer/MarginContainer/VBoxContainer/QuitMoneySchemeBtn" to="." method="_on_quit_money_scheme_btn_pressed"]

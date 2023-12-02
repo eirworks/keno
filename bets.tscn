@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6tfunn8yfg7f"]
+[gd_scene load_steps=2 format=3 uid="uid://c6tfunn8yfg7f"]
 
-[ext_resource type="PackedScene" uid="uid://cfoe35cwc43k3" path="res://bet_badge.tscn" id="1_06de0"]
 [ext_resource type="Script" path="res://bets.gd" id="1_ugfv6"]
 
 [node name="Bets" type="PanelContainer"]
@@ -18,6 +17,22 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
+[node name="Set5Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="Set50Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "50"
+
+[node name="Set50Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "100"
+
+[node name="Set50Button3" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "500"
+
 [node name="DecreaseBetButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 disabled = true
@@ -26,6 +41,8 @@ text = "Decrease (-)"
 [node name="BetAmount" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.968627, 0.823529, 0.301961, 1)
+theme_override_font_sizes/font_size = 32
 text = "$5"
 horizontal_alignment = 1
 
@@ -50,12 +67,12 @@ text = "Odd
 [node name="BigSmallContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/BigSmallContainer"]
+[node name="SmallerBtn" type="Button" parent="VBoxContainer/BigSmallContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Smaller"
 
-[node name="Button2" type="Button" parent="VBoxContainer/BigSmallContainer"]
+[node name="BiggerBtn" type="Button" parent="VBoxContainer/BigSmallContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Bigger"
@@ -63,17 +80,17 @@ text = "Bigger"
 [node name="TigerDragonContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/TigerDragonContainer"]
+[node name="TigerBtn" type="Button" parent="VBoxContainer/TigerDragonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tiger"
 
-[node name="Button2" type="Button" parent="VBoxContainer/TigerDragonContainer"]
+[node name="TigerDragonDrawBtn" type="Button" parent="VBoxContainer/TigerDragonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Draw"
 
-[node name="Button3" type="Button" parent="VBoxContainer/TigerDragonContainer"]
+[node name="DragonBtn" type="Button" parent="VBoxContainer/TigerDragonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Dragon"
@@ -81,28 +98,28 @@ text = "Dragon"
 [node name="ElementalBtnContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+[node name="ElementGoldBtn" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Gold"
 
-[node name="Button2" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+[node name="ElementWoodBtn" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Wood
 "
 
-[node name="Button3" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+[node name="ElementWaterBtn" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Water"
 
-[node name="Button4" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+[node name="ElementFireBtn" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Fire"
 
-[node name="Button5" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
+[node name="ElementEarthBtn" type="Button" parent="VBoxContainer/ElementalBtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Earth"
@@ -123,13 +140,14 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PaidBets" type="VFlowContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="PaidBets" type="HFlowContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" parent="VBoxContainer/MarginContainer/ScrollContainer/PaidBets" instance=ExtResource("1_06de0")]
-layout_mode = 2
-bet_type = 5
-bet = 5.0
-bet_rate = 1.95
-
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Set5Button" to="." method="_on_set_5_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Set50Button" to="." method="_on_set_50_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Set50Button2" to="." method="_on_set_50_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Set50Button3" to="." method="_on_set_50_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/DecreaseBetButton" to="." method="_on_decrease_bet_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/IncreaseBetButton" to="." method="_on_increase_bet_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EvenOddContainer/EvenBtn" to="." method="_on_even_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/EvenOddContainer/OddBtn" to="." method="_on_odd_btn_pressed"]

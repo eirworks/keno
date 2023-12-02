@@ -112,3 +112,8 @@ func _on_money_from_parent_btn_pressed():
 
 func _on_bet_btn_pressed():
 	roll_the_balls()
+
+
+func _on_bets_bet_added():
+	$BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer/TotalBetLabel.text = "${amount}".format({"amount": Keno.get_total_bets()})
+	update_cash()

@@ -6,6 +6,8 @@ var numbers : Array = []
 var total : int = 0
 var displayed_total : int = 0
 
+var bet_amount : float = 5
+
 var database : Dictionary = {
 	"steal_from_parent": 0
 }
@@ -15,6 +17,7 @@ var bets : Array = []
 const MIN_BALL = 1
 const MAX_BALL = 80
 const DRAWING_BALLS = 20
+const BET_INCREMENT = 5
 
 # Why 811? I don't even know...
 # I got this value from the gambling site.
@@ -30,6 +33,15 @@ func generate_numbers():
 	for i in numbers:
 		sum += i
 	total = sum
+
+func get_total_bets() -> float:
+	var total : float = 0
+	for bet in bets:
+		total += (bet.amount * bet.rate)
+	return total
+	
+func can_add_bet(rated_amount: float) -> bool:
+	return (get_total_bets() + rated_amount) <= cash
 
 func set_cash(amount : float):
 	cash = amount
