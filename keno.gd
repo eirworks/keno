@@ -6,6 +6,9 @@ var numbers : Array = []
 var total : int = 0
 var displayed_total : int = 0
 
+var total_wins : float = 0
+var total_loses : float = 0
+
 var bet_amount : float = 5
 
 var database : Dictionary = {
@@ -37,6 +40,18 @@ func generate_numbers():
 func get_total_bets() -> float:
 	var total : float = 0
 	for bet in bets:
+		total += bet.amount
+	return total
+	
+func get_total_rates() -> float:
+	var total : float = 0
+	for bet in bets:
+		total += (bet.amount * bet.rate) - bet.amount
+	return total
+	
+func get_total_bet_and_rates() -> float:
+	var total : float = 0
+	for bet in bets:
 		total += (bet.amount * bet.rate)
 	return total
 	
@@ -51,3 +66,7 @@ func add_cash(amount: float):
 	
 func add_day(amount: int = 1):
 	day += amount
+
+func reset_wins_loses():
+	total_wins = 0
+	total_loses = 0

@@ -51,7 +51,7 @@ func bet_buttons_clicked(type: BetType, amount: float, rate: float):
 	var bet = KenoBet.new(type, amount, rate)
 	remove_same_bet_type(type)
 	Keno.bets.append(bet)
-	Keno.add_cash(-1 * (bet.amount * bet.rate))
+	Keno.add_cash(-1 * (bet.amount))
 	update_bet_badges()
 	emit_signal("bet_added")
 
@@ -104,3 +104,43 @@ func _on_clear_bets_button_pressed():
 
 func _on_odd_btn_pressed():
 	bet_buttons_clicked(BetType.Odd, Keno.bet_amount, KenoBet.RATE_ODD)
+
+
+func _on_smaller_btn_pressed():
+	bet_buttons_clicked(BetType.Smaller, Keno.bet_amount, KenoBet.RATE_SMALLER)
+
+
+func _on_bigger_btn_pressed():
+	bet_buttons_clicked(BetType.Bigger, Keno.bet_amount, KenoBet.RATE_BIGGER)
+
+
+func _on_tiger_btn_pressed():
+	bet_buttons_clicked(BetType.Tiger, Keno.bet_amount, KenoBet.RATE_TIGER)
+
+
+func _on_dragon_btn_pressed():
+	bet_buttons_clicked(BetType.Dragon, Keno.bet_amount, KenoBet.RATE_DRAGON)
+
+
+func _on_tiger_dragon_draw_btn_pressed():
+	bet_buttons_clicked(BetType.DragonTigerTie, Keno.bet_amount, KenoBet.RATE_DRAGON_TIGER_TIE)
+
+
+func _on_element_gold_btn_pressed():
+	bet_buttons_clicked(BetType.ElementGold, Keno.bet_amount, KenoBet.RATE_EL_GOLD)
+
+
+func _on_element_wood_btn_pressed():
+	bet_buttons_clicked(BetType.ElementWood, Keno.bet_amount, KenoBet.RATE_EL_WOOD)
+
+
+func _on_element_water_btn_pressed():
+	bet_buttons_clicked(BetType.ElementWater, Keno.bet_amount, KenoBet.RATE_EL_WATER)
+
+
+func _on_element_fire_btn_pressed():
+	bet_buttons_clicked(BetType.ElementFire, Keno.bet_amount, KenoBet.RATE_EL_FIRE)
+
+
+func _on_element_earth_btn_pressed():
+	bet_buttons_clicked(BetType.ElementEarth, Keno.bet_amount, KenoBet.RATE_EL_EARTH)

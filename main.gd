@@ -25,6 +25,7 @@ func _ready():
 	update_day()
 	
 	initial_balls()
+	update_total_bets()
 	
 func initial_balls():
 	var children = $BaseUI/Container/BallContainer/HBoxContainer/BallsGrid.get_children()
@@ -74,6 +75,13 @@ func update_cash(amount: int = 0):
 	Keno.add_cash(amount)
 	$BaseUI/Container/TopStatusBar/MarginContainer/HBoxContainer/MoneyLabel.text = "$ {cash}".format({"cash": str(Keno.cash)})
 	
+func update_total_bets():
+	var total_bet_label = $BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer/TotalBetLabel
+	total_bet_label.text = "${amount} (${rate})".format({
+		"amount": Keno.get_total_bets(),
+		"rate": Keno.get_total_rates()
+	})
+	
 func update_result():
 	$BaseUI/Container/ResultContainer/MarginContainer/VBoxContainer/CurrentResultContainer/ResultNumberLabel.text = str(Keno.displayed_total)
 	
@@ -88,15 +96,36 @@ func update_result():
 	
 
 func roll_the_balls():
-	
+	$BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox.visible = false
 	Keno.generate_numbers()
 	
-	update_balls()
+	await update_balls()
+	iterate_winnings()
 	
 	update_cash()
 	update_day()
-	
+	update_total_bets()
 	update_result()
+	
+	$BaseUI/Container/Bets.update_bet_badges()
+	update_win_lose()
+	
+func iterate_winnings():
+	Keno.reset_wins_loses()
+	for bet in Keno.bets:
+		if bet.is_winning(Keno.total):
+			Keno.add_cash(bet.amount * bet.rate)
+			print("Won ${win}".format({"win": bet.amount * bet.rate}))
+			Keno.total_wins += bet.amount * bet.rate
+		else:
+			Keno.total_loses += bet.amount * -1
+	Keno.bets.clear()
+	
+func update_win_lose():
+	print("Update wins and loses")
+	$BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox.visible = true
+	$BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox/Wins/TotalWinsLabel.text = "${win}".format({"win": Keno.total_wins})
+	$BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox/Loses/TotalLosesLabel.text = "${amount}".format({"amount": abs(Keno.total_loses)})
 
 func _on_get_money_btn_pressed():
 	$GetMoneyUI.visible = !$GetMoneyUI.visible
@@ -115,5 +144,5 @@ func _on_bet_btn_pressed():
 
 
 func _on_bets_bet_added():
-	$BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer/TotalBetLabel.text = "${amount}".format({"amount": Keno.get_total_bets()})
+	update_total_bets()
 	update_cash()

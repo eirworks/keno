@@ -152,13 +152,51 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
-text = "Total Betting"
+text = "Total Betting (Total Rate)"
 horizontal_alignment = 1
 
 [node name="TotalBetLabel" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/CalculationContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "$80"
+text = "$0"
+horizontal_alignment = 1
+
+[node name="WinLoseBox" type="HBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Wins" type="VBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox/Wins"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.87451, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Wins"
+horizontal_alignment = 1
+
+[node name="TotalWinsLabel" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox/Wins"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.87451, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "$0"
+horizontal_alignment = 1
+
+[node name="Loses" type="VBoxContainer" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox/Loses"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.188235, 0.137255, 1)
+theme_override_font_sizes/font_size = 14
+text = "Loses"
+horizontal_alignment = 1
+
+[node name="TotalLosesLabel" type="Label" parent="BaseUI/Container/BetConfirmation/MarginContainer/HBoxContainer/WinLoseBox/Loses"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.188235, 0.137255, 1)
+theme_override_font_sizes/font_size = 28
+text = "$0"
 horizontal_alignment = 1
 
 [node name="BetBtn" type="Button" parent="BaseUI/Container"]
